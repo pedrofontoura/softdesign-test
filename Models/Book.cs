@@ -11,6 +11,9 @@ public class Book
     [Required(ErrorMessage = "Required field")]
     public string Title { get; set; }
     
+    [DisplayName("Synopsis")]
+    public string Synopsis { get; set; }
+    
     [DisplayName("Status")]
     public Status Status { get; set; } = Status.Available;
     
