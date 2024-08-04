@@ -9,9 +9,11 @@ public class Book
     
     [DisplayName("Title")]
     [Required(ErrorMessage = "Required field")]
+    [StringLength(200, ErrorMessage = "Title must have 200 characters or less")]
     public string Title { get; set; }
     
     [DisplayName("Synopsis")]
+    [StringLength(10000, ErrorMessage = "Synopsis must have 10000 characters or less")]
     public string Synopsis { get; set; }
     
     [DisplayName("Status")]
