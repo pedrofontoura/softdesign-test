@@ -90,7 +90,7 @@ namespace LibraryApp
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Synopsis,Status")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Synopsis,Status,CreatedAt")] Book book)
         {
             if (id != book.Id)
             {
@@ -101,6 +101,7 @@ namespace LibraryApp
             {
                 try
                 {
+                    book.UpdatedAt = DateTime.Now;
                     _context.Update(book);
                     await _context.SaveChangesAsync();
                 }
