@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryApp.Data;
 using LibraryApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryApp
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -56,7 +58,7 @@ namespace LibraryApp
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Status,CreatedAt,UpdatedAt")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Status,CreatedAt,UpdatedAt")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +90,7 @@ namespace LibraryApp
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Status,CreatedAt,UpdatedAt")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Synopsis,Status,CreatedAt,UpdatedAt")] Book book)
         {
             if (id != book.Id)
             {

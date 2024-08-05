@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240804200254_AddSynopsisToBook")]
-    partial class AddSynopsisToBook
+    [Migration("20240805132015_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,11 +35,13 @@ namespace LibraryApp.Migrations
 
                     b.Property<string>("Synopsis")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(10000)
+                        .HasColumnType("varchar(10000)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
