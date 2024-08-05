@@ -26,6 +26,7 @@
     <Compile Remove="Data\Migrations\**" />
     <Compile Remove="Migrations\20240804153331_InitialMigration.cs" />
     <Compile Remove="Migrations\20240804153331_InitialMigration.Designer.cs" />
+    <Compile Remove="Models\CreateBookViewModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

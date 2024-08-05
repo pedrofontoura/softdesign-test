@@ -17,7 +17,7 @@ public class Book
     public string Synopsis { get; set; }
     
     [DisplayName("Status")]
-    public Status Status { get; set; } = Status.Available;
+    public BookStatus Status { get; set; } = BookStatus.Available;
     
     [DisplayName("Created at")]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -26,7 +26,7 @@ public class Book
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }
 
-public enum Status
+public enum BookStatus
 {
     Available = 1,
     Rented = 2
