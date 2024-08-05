@@ -1,21 +1,29 @@
 ﻿using System.Diagnostics;
+using LibraryApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using LibraryApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ApplicationDbContext context, ILogger<HomeController> logger)
     {
+        _context = context;
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        return _context.Books != null ? 
+            View(await _context.Books.ToListAsync()) :
+            Problem("Entity set 'ApplicationDbContext.Books'  is null.");
     }
 
     public IActionResult Privacy()
